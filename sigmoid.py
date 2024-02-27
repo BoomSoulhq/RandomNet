@@ -7,7 +7,7 @@ from torch import optim
 import math
 
 import os
-
+#清清是傻瓜
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
 # <editor-fold desc ="拉格朗日差值"
