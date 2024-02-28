@@ -43,7 +43,7 @@ def sigmoid_fit(x_data, y_data, x_range):
     # 初始参数猜测（L，x0，k，b）
     p0 = [max(y_data), np.median(x_data), 1, min(y_data)]
     # 使用curve_fit进行拟合
-    popt, _ = curve_fit(sigmoid, x_data, y_data, p0, bounds=(0, 10000) maxfev=1000)
+    popt, _ = curve_fit(sigmoid, x_data, y_data, p0, bounds=(0, 10000), maxfev=1000)
     print("sigmoid参数:", popt)
     return sigmoid(x_range, *popt)
 
@@ -288,15 +288,14 @@ def ratio(show_ratio: int, test_mol_n, test_mol_y):
 
 
 if __name__ == "__main__":
-    #想看清清穿黑丝
     """这里输入数据"""
-    m = np.array([0, 1.256, 6.28, 31.4])  # 体外浓度
-    n = np.array([21.178, 50, 19.635, 18.589])  # 体外通路活性
+    m = np.array([0, 21.619, 108.095, 540.475])  # 体外浓度
+    n = np.array([22.832, 23.489, 19.488, 21.387])  # 体外通路活性
     m, n = bubble_sort(m, n)
 
     # x = np.array([0, 5,8, 10])
-    x = np.array([50, 30, 100, 500])  # 体内浓度
-    y = np.array([28.18, 27.69, 33.39, 36.98])  # 体内通路活性
+    x = np.array([0, 450, 1000, 2000])  # 体内浓度
+    y = np.array([29.54,34.07, 34.68, 37.08])  # 体内通路活性
 
-    cut_ratio = 0.00001  # 这个参数越小最后输出的曲线保留的部分越多设置在0.01以下均可
+    cut_ratio = 0.001  # 这个参数越小最后输出的曲线保留的部分越多设置在0.01以下均可
     data_test(m, n, x, y, show_ratio=80)  # show_ratio 是指显示的比例
