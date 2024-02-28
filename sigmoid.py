@@ -43,7 +43,7 @@ def sigmoid_fit(x_data, y_data, x_range):
     # 初始参数猜测（L，x0，k，b）
     p0 = [max(y_data), np.median(x_data), 1, min(y_data)]
     # 使用curve_fit进行拟合
-    popt, _ = curve_fit(sigmoid, x_data, y_data, p0, bounds=(0, 10000))
+    popt, _ = curve_fit(sigmoid, x_data, y_data, p0, bounds=(0, 10000) maxfev=1000)
     print("sigmoid参数:", popt)
     return sigmoid(x_range, *popt)
 
